@@ -41,12 +41,11 @@ jobs:
         mkdir output && cd output
         mv ../moddedrec.img recovery.img
         tar cvf fastbootd-recovery.tar recovery.img
-        md5sum fastbootd-recovery.tar >> fastbootd-recovery.tar.md5
-        mv fastbootd-recovery.tar fastbootd-recovery.tar.md5
+        mv fastbootd-recovery.tar fastbootd-finalrecovery.tar
 
     - name: Upload to Release
       uses: softprops/action-gh-release@v2
       with:
-        files: output/*.md5
-        name: Patched-Recovery
+        files: output/*.tar
+        name: Patched-Recovery-Gain
         tag_name: ${{ github.run_id }}
